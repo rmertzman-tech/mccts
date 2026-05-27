@@ -3,265 +3,439 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Meta-Cognitive Critical Thinking Studio — Phase R</title>
+<title>Meta-Cognitive Critical Thinking Studio — Phase R.1</title>
 <style>
-:root{--bg:#f5f3ee;--panel:#fff;--ink:#17211f;--muted:#65716d;--line:#d9ded8;--accent:#2f6f5e;--accent2:#7b5b9f;--warn:#b8791d;--soft:#eef7f1;--soft2:#f6f0fb;--softWarn:#fff8ea;--blueSoft:#eef4fb;--shadow:0 14px 34px rgba(23,33,31,.08)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#fbfaf7 0%,var(--bg) 100%);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
-header{background:radial-gradient(circle at top left,#e8f4ee 0%,#fff 46%,#f4eff9 100%);border-bottom:1px solid var(--line)}.header-inner{max-width:1160px;margin:0 auto;padding:44px 22px 38px}.kicker{text-transform:uppercase;letter-spacing:.1em;font-weight:850;color:var(--accent);font-size:.78rem}
-h1{font-size:clamp(2.15rem,4.5vw,4.2rem);line-height:1.03;margin:.35em 0 .25em}h2{font-size:1.65rem;margin:.25em 0 .6em}h3{font-size:1.12rem;margin:.25em 0 .45em}p{margin:.5rem 0 .85rem}.subtitle{font-size:1.13rem;color:var(--muted);max-width:920px}
+:root {
+  --bg:#f5f3ee; --panel:#fff; --ink:#17211f; --muted:#65716d; --line:#d9ded8;
+  --accent:#2f6f5e; --accent2:#70539b; --warn:#b8791d; --danger:#9d3a2f;
+  --soft:#eef7f1; --soft2:#f6f0fb; --blue:#eef4fb; --warnsoft:#fff8ea;
+  --shadow:0 14px 34px rgba(23,33,31,.08);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#fbfaf7 0%,var(--bg) 100%);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+header{background:radial-gradient(circle at top left,#e8f4ee 0%,#fff 46%,#f4eff9 100%);border-bottom:1px solid var(--line)}
+.header-inner{max-width:1160px;margin:0 auto;padding:44px 22px 38px}
+.kicker{text-transform:uppercase;letter-spacing:.1em;font-weight:850;color:var(--accent);font-size:.78rem}
+h1{font-size:clamp(2.1rem,4.4vw,4.1rem);line-height:1.03;margin:.35em 0 .25em}
+h2{font-size:1.65rem;margin:.2em 0 .55em} h3{font-size:1.12rem;margin:.25em 0 .45em}
+p{margin:.5rem 0 .85rem} .subtitle{font-size:1.13rem;color:var(--muted);max-width:920px}
 .nav{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;padding:12px 16px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}
-.nav a{color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:.88rem;background:#fff;font-weight:750}.nav a:hover,.nav a.active{background:var(--soft);border-color:#b6d2c7;color:var(--accent)}
-main{max-width:1160px;margin:0 auto;padding:26px 22px 56px}section{scroll-margin-top:92px}.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:20px;margin:18px 0}.hero-card{padding:24px;border-left:7px solid var(--accent)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:16px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.button{display:inline-block;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.button.purple{background:var(--accent2);color:#fff;border-color:var(--accent2)}.button.warn{background:var(--softWarn);color:#6e4512;border-color:#efd7a2}.button:hover{filter:brightness(.98);transform:translateY(-1px)}
-.notice,.privacy-box,.placeholder,.diagnostic,.blue-box{border:1px solid var(--line);border-radius:18px;padding:16px;margin:14px 0;background:#fff}.notice{border-left:6px solid var(--accent);background:#f7fbf8}.privacy-box{border-left:6px solid var(--accent2);background:var(--soft2)}.placeholder{border-left:6px solid var(--warn);background:var(--softWarn)}.blue-box{border-left:6px solid #4676a8;background:var(--blueSoft)}.diagnostic{background:#f8fbfb}
-.table{width:100%;border-collapse:collapse;margin:12px 0;background:#fff;border-radius:14px;overflow:hidden}.table th,.table td{border:1px solid var(--line);padding:10px;vertical-align:top;text-align:left}.table th{background:#f1f5f2}
-.pill{display:inline-block;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 9px;font-weight:850;font-size:.82rem;color:var(--accent);margin:2px 3px 2px 0}.pill.warn{color:#7b4e13;background:#fff8ea;border-color:#efd7a2}.pill.danger{color:#8b2e24;background:#fff2ef;border-color:#f0c8c0}.pill.purple{color:#5c3e83;background:#f7f2fb;border-color:#d9cbe8}
-.clean-list li{margin:8px 0}pre{white-space:pre-wrap;background:#17211f;color:#eef7f1;padding:14px;border-radius:14px;overflow:auto}textarea,input[type=text],input[type=range],select{width:100%}textarea,input[type=text],select{border:1px solid var(--line);border-radius:14px;padding:12px;font:inherit;background:#fff}textarea{min-height:82px;resize:vertical}label{font-weight:850}.output{background:#f7fbf8;border:1px solid #cfe1d7;border-radius:16px;padding:14px;min-height:90px}.small{font-size:.92rem;color:var(--muted)}
-footer{border-top:1px solid var(--line);background:#fff}.footer-note{max-width:1160px;margin:0 auto;padding:20px 22px;color:var(--muted);font-size:.9rem}
-.slider-card,.demo-card,.step-card{border:1px solid var(--line);border-radius:18px;padding:15px;background:#fff}.demo-card.active{border-color:#b6d2c7;background:#f7fbf8}.slider-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}.slider-value{font-weight:900;color:var(--accent);font-size:1.1rem}.meter{height:16px;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#f0f1ed}.meter-bar{height:100%;width:50%;background:linear-gradient(90deg,#b8791d,#2f6f5e);transition:width .18s ease}.result-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.score{font-size:2.4rem;line-height:1;font-weight:950;color:var(--accent)}.step-num{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:999px;background:var(--accent);color:#fff;font-weight:900;margin-right:8px}.loop{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.loop div{border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px;text-align:center;font-weight:800}
-@media(max-width:900px){.two-col,.result-grid,.loop{grid-template-columns:1fr}.nav{position:relative}}
+.nav a{color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:.88rem;background:#fff;font-weight:750}
+.nav a:hover,.nav a.active{background:var(--soft);border-color:#b6d2c7;color:var(--accent)}
+main{max-width:1160px;margin:0 auto;padding:26px 22px 56px} section{scroll-margin-top:92px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:20px;margin:18px 0}
+.hero{padding:24px;border-left:7px solid var(--accent)} .challenger{border-left:7px solid var(--danger);background:linear-gradient(135deg,#fff 0%,#fff7f5 100%)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:16px} .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px} button,.button{display:inline-block;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer;font:inherit}
+button.primary,.button.primary{background:var(--accent);color:#fff;border-color:var(--accent)} button.purple,.button.purple{background:var(--accent2);color:#fff;border-color:var(--accent2)} button.warn{background:var(--warnsoft);color:#6e4512;border-color:#efd7a2}
+button:hover,.button:hover{filter:brightness(.98);transform:translateY(-1px)}
+.notice,.privacy,.blue,.warnbox,.output,.focus{border:1px solid var(--line);border-radius:18px;padding:16px;margin:14px 0;background:#fff}
+.notice{border-left:6px solid var(--accent);background:#f7fbf8} .privacy{border-left:6px solid var(--accent2);background:var(--soft2)} .blue{border-left:6px solid #4676a8;background:var(--blue)} .warnbox{border-left:6px solid var(--warn);background:var(--warnsoft)}
+.output{background:#f7fbf8;border-color:#cfe1d7;min-height:92px;white-space:pre-wrap} .focus{background:#fbf8ff;border-color:#d9cbe8;min-height:92px}
+.table{width:100%;border-collapse:collapse;margin:12px 0;background:#fff;border-radius:14px;overflow:hidden} .table th,.table td{border:1px solid var(--line);padding:10px;vertical-align:top;text-align:left} .table th{background:#f1f5f2}
+.pill{display:inline-block;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 9px;font-weight:850;font-size:.82rem;color:var(--accent);margin:2px 3px 2px 0} .pill.warn{color:#7b4e13;background:#fff8ea;border-color:#efd7a2} .pill.danger{color:#8b2e24;background:#fff2ef;border-color:#f0c8c0} .pill.purple{color:#5c3e83;background:#f7f2fb;border-color:#d9cbe8}
+.clean-list li{margin:8px 0} pre{white-space:pre-wrap;background:#17211f;color:#eef7f1;padding:14px;border-radius:14px;overflow:auto}
+textarea,input[type=range],select{width:100%} textarea,select{border:1px solid var(--line);border-radius:14px;padding:12px;font:inherit;background:#fff} textarea{min-height:86px;resize:vertical} label{font-weight:850}
+.slider-card,.step-card{border:1px solid var(--line);border-radius:18px;padding:15px;background:#fff} .step-card.prf{border:2px solid #d9cbe8;background:linear-gradient(135deg,#fff 0%,#f7f2fb 100%)}
+.slider-head{display:flex;justify-content:space-between;gap:10px;align-items:baseline} .slider-value{font-weight:900;color:var(--accent);font-size:1.1rem}
+.meter{height:16px;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#f0f1ed} .meter-bar{height:100%;width:50%;background:linear-gradient(90deg,#b8791d,#2f6f5e);transition:width .18s ease}
+.score{font-size:2.4rem;line-height:1;font-weight:950;color:var(--accent)} .small{font-size:.92rem;color:var(--muted)} .footer-note{max-width:1160px;margin:0 auto;padding:20px 22px;color:var(--muted);font-size:.9rem} footer{border-top:1px solid var(--line);background:#fff}
+.loop{display:grid;grid-template-columns:repeat(5,1fr);gap:10px} .loop div{border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px;text-align:center;font-weight:800}
+@media(max-width:900px){.two,.loop{grid-template-columns:1fr}.nav{position:relative}}
 </style>
 </head>
 <body>
-<header id="top"><div class="header-inner"><div class="kicker">Phase R · OS1 → OS2 Interactive Translation Studio · Single-File Build</div><h1>Meta-Cognitive Critical Thinking Studio</h1><p class="subtitle">A public teaching tool for moving from felt certitude to shared reasoning: OS1 → OS2, Toulmin argument structure, warrant analysis as a PRF window, ethical lens comparison, and repair-oriented critical thinking.</p><div class="actions"><a class="button primary" href="#walkthrough">Start Guided Walkthrough</a><a class="button" href="#demo-library">Open Demo Library</a><a class="button" href="#coherence-bridge">Coherence Bridge</a><a class="button" href="#site-check">Run Site Check</a></div></div></header>
-<nav class="nav" aria-label="Main navigation"><a href="#home">Home</a><a href="#walkthrough">Walkthrough</a><a href="#demo-library">Demos</a><a href="#warrant-bridge">Warrant</a><a href="#coherence-bridge">Coherence</a><a href="#os1-os2">OS1→OS2</a><a href="#toulmin">Toulmin</a><a href="#agency-loop">Agency Loop</a><a href="#frameworks">Frameworks</a><a href="#vocabulary">Vocabulary</a><a href="#handoff">Case Handoff</a><a href="#site-check">Site Check</a></nav>
-<main>
-<section id="home" class="card hero-card"><div class="kicker">Purpose</div><h2>From felt certainty to public reasoning</h2><p>This studio helps students recognize the authority and limits of immediate moral experience. A first reaction may reveal something important, but it is not yet a public argument. The task is to translate that reaction into claims, evidence, warrants, qualifications, objections, and repair-oriented proposals that others can examine.</p><div class="notice"><strong>Core teaching claim:</strong><p>Students do not abandon moral emotion or lived experience. They learn to move from OS1 felt certitude into OS2 shared reasoning without pretending that uncertainty means “nothing can be known.”</p></div><div class="blue-box"><strong>Phase R addition:</strong><p>This build adds a full OS1 → OS2 Interactive Translation Studio. Students can now move step by step from a first reaction into a public claim, grounds, warrant, qualifier, rebuttal, and repair statement.</p></div></section>
-<section id="walkthrough" class="card"><div class="kicker">10-Minute Guided Walkthrough</div><h2>Teach the whole method without improvising examples</h2><p>Use this sequence live in class, or ask students to work through it independently. The walkthrough can be done with any demo case, but the Challenger demo is the clearest first example.</p><div class="grid"><div class="step-card"><h3><span class="step-num">1</span>Load a demo</h3><p>Choose Challenger, Schelling, Nursing Homes, Higher Education IPS, or Everyday Group Project.</p></div><div class="step-card"><h3><span class="step-num">2</span>Name OS1</h3><p>Identify the first felt reaction without treating it as proof.</p></div><div class="step-card"><h3><span class="step-num">3</span>Run coherence</h3><p>Ask what kind of reasoning support is needed right now.</p></div><div class="step-card"><h3><span class="step-num">4</span>Find the warrant</h3><p>Ask what assumption or principle makes the evidence count for the claim.</p></div><div class="step-card"><h3><span class="step-num">5</span>Build Toulmin</h3><p>Separate claim, grounds, warrant, backing, qualifier, rebuttal, and repair.</p></div><div class="step-card"><h3><span class="step-num">6</span>Revise PRF</h3><p>Ask what this argument should change about perception, model, or future action.</p></div></div><div class="actions"><button class="button primary" onclick="loadDemo('challenger')">Quick Launch: Challenger Walkthrough</button><button class="button" onclick="loadDemo('everyday')">Quick Launch: Everyday Student Case</button><a class="button" href="#warrant-bridge">Why Warrant Matters</a></div></section>
-<section id="demo-library" class="card"><div class="kicker">Demo Scenario Library</div><h2>Ready-to-use classroom examples</h2><p>Each demo loads a public scenario, suggested slider values, an OS1 reaction, an OS2 claim, a weak argument, a stronger argument, Toulmin structure, and a repair-oriented next step.</p><div id="demoCards" class="grid"></div><div class="card"><h3 id="activeDemoTitle">No demo loaded yet</h3><div id="activeDemoOutput" class="output">Choose a demo above to load a complete classroom walkthrough.</div><div class="actions"><button class="button primary" onclick="loadActiveDemoToTools()">Load active demo into tools</button><button class="button" onclick="copyActiveDemo()">Copy active demo summary</button><a class="button" href="#coherence-bridge">Go to Coherence Bridge</a></div><p class="small" id="demoCopyStatus"></p></div></section>
-<section id="warrant-bridge" class="card"><div class="kicker">Warrant Bridge</div><h2>Why the warrant matters</h2><p>The claim shows what a student concludes. The grounds show what evidence the student notices. The <strong>warrant</strong> shows why that evidence is being treated as relevant. In EBB terms, the warrant is where the student’s PRF becomes visible in argument form.</p><div class="notice"><strong>Teaching move:</strong><p>Ask: “What must be true for these grounds to support this claim?” That question reveals assumptions, values, ontologies, duties, and models that are often hidden inside OS1 certainty.</p></div><div class="two-col"><div class="card"><h3>Find the warrant exercise</h3><label for="argumentSelect">Choose a standard argument</label><select id="argumentSelect" onchange="renderArgumentExercise()"></select><div id="argumentExercise" class="output">Choose an argument to analyze.</div><div class="actions"><button class="button primary" onclick="loadArgumentToToulmin()">Load this argument into Toulmin fields</button><button class="button" onclick="copyArgumentExercise()">Copy exercise</button></div><p class="small" id="argumentCopyStatus"></p></div><div class="card"><h3>Warrant as PRF window</h3><table class="table"><thead><tr><th>Question</th><th>What it reveals</th></tr></thead><tbody><tr><td>What counts as harm here?</td><td>Ontology and value focus</td></tr><tr><td>Whose voice counts as knowledge?</td><td>Epistemic trust and authority</td></tr><tr><td>What duty is being assumed?</td><td>Deontic structure</td></tr><tr><td>What future is being protected?</td><td>Temporal horizon</td></tr><tr><td>What would repair require?</td><td>Agency-supporting conditions</td></tr></tbody></table></div></div></section>
-<section id="coherence-bridge" class="card"><div class="kicker">Phase Q Tool</div><h2>Coherence Bridge MVP</h2><p>This is a light classroom diagnostic for reasoning accessibility. It is not a clinical, psychological, or grading instrument. It helps students ask what kind of support may be useful before moving from OS1 felt certitude into OS2 public reasoning.</p><div class="privacy-box"><strong>Privacy reminder:</strong><p>Use general classroom language. Do not enter private personal disclosures, medical details, trauma history, or sensitive student information.</p></div><div class="grid" id="sliderGrid">
-<div class="slider-card"><div class="slider-head"><label for="bodyStress">Body / stress readiness</label><span class="slider-value" id="bodyStressVal">65</span></div><input id="bodyStress" type="range" min="0" max="100" value="65"><p class="small">How available does your body feel for careful reasoning rather than threat-response, shutdown, or rush?</p></div>
-<div class="slider-card"><div class="slider-head"><label for="identityAgency">Identity / agency clarity</label><span class="slider-value" id="identityAgencyVal">70</span></div><input id="identityAgency" type="range" min="0" max="100" value="70"><p class="small">How clear is your role as a knower, participant, and responsible agent in this discussion?</p></div>
-<div class="slider-card"><div class="slider-head"><label for="cognitiveClarity">Cognitive clarity</label><span class="slider-value" id="cognitiveClarityVal">72</span></div><input id="cognitiveClarity" type="range" min="0" max="100" value="72"><p class="small">How ready are you to separate claim, evidence, warrant, assumption, qualifier, and objection?</p></div>
-<div class="slider-card"><div class="slider-head"><label for="socialVoice">Social trust / protected voice</label><span class="slider-value" id="socialVoiceVal">62</span></div><input id="socialVoice" type="range" min="0" max="100" value="62"><p class="small">How safe and fair does the discussion space feel for speaking, listening, questioning, and revising?</p></div>
-<div class="slider-card"><div class="slider-head"><label for="temporalHorizon">Temporal horizon</label><span class="slider-value" id="temporalHorizonVal">68</span></div><input id="temporalHorizon" type="range" min="0" max="100" value="68"><p class="small">How well can you connect the immediate issue to future consequences, repair, and narrative continuity?</p></div></div>
-<div class="actions"><button class="button primary" onclick="analyzeCoherence()">Generate reasoning guidance</button><button class="button" onclick="setPreset('ready')">Preset: ready to reason</button><button class="button" onclick="setPreset('heated')">Preset: emotionally heated</button><button class="button" onclick="setPreset('confused')">Preset: unclear evidence</button><button class="button" onclick="setPreset('silenced')">Preset: low voice/trust</button><button class="button warn" onclick="resetCoherence()">Reset</button></div>
-<div class="result-grid"><div class="card"><span class="pill">Reasoning accessibility</span> <span class="pill" id="statusPill">Not generated</span><div class="score" id="coherenceScore">—</div><div class="meter"><div class="meter-bar" id="coherenceBar"></div></div><div class="output" id="coherenceOutput">Adjust the sliders and generate guidance.</div></div><div class="card"><h3>Recommended next move</h3><div class="output" id="nextMoveOutput">The tool will suggest whether to calm, clarify, qualify, invite voice, widen the time horizon, or proceed to Toulmin structure.</div><div class="actions"><button class="button primary" onclick="copyCoherenceSummary()">Copy summary</button><button class="button" onclick="sendToOS1OS2()">Send template to OS1 → OS2</button></div><p class="small" id="copyStatus"></p></div></div>
-<div class="card"><h3>Public scenario note</h3><p class="small">Use a public classroom case or fictional scenario. Keep it structural rather than personally revealing.</p><textarea id="publicScenario" placeholder="Example: In the Challenger case, the team faces pressure to treat uncertain evidence as acceptable enough for action."></textarea></div></section>
-<section id="os1-os2" class="card">
-  <div class="kicker">Phase R Tool</div>
-  <h2>OS1 → OS2 Interactive Translation Studio</h2>
-  <p>This studio turns a first moral reaction into a public reasoning statement. The goal is not to silence OS1. The goal is to let OS1 show what matters, then use metacognition to test, clarify, warrant, qualify, and repair.</p>
-
-  <div class="notice"><strong>Core teaching move:</strong><p>OS1 says, “This matters.” OS2 asks, “What public claim can I support, with what evidence, through what warrant, under what limits, with what repair?”</p></div>
-
+<header id="top"><div class="header-inner">
+  <div class="kicker">Phase R.1 · Challenger Classroom-Ready Demo · Dynamic Guidance Patch</div>
+  <h1>Meta-Cognitive Critical Thinking Studio</h1>
+  <p class="subtitle">A public teaching tool for moving from OS1 felt certainty into OS2 public reasoning through warrant analysis, Coherence Bridge guidance, Toulmin structure, alternate PRF checks, and PRF revision.</p>
   <div class="actions">
-    <button class="button primary" onclick="loadActiveDemoToTranslator()">Load active demo into translator</button>
-    <button class="button" onclick="loadDemo('challenger'); loadActiveDemoToTranslator();">Demo: Challenger</button>
-    <button class="button" onclick="loadDemo('schelling'); loadActiveDemoToTranslator();">Demo: Schelling</button>
-    <button class="button" onclick="loadDemo('everyday'); loadActiveDemoToTranslator();">Demo: Group Project</button>
-    <button class="button warn" onclick="clearOS2Studio()">Clear translator</button>
+    <a class="button primary" href="#challenger">Launch Challenger Demo</a>
+    <a class="button" href="#coherence">Coherence Bridge</a>
+    <a class="button" href="#translator">OS1 → OS2 Translator</a>
+    <a class="button" href="#sitecheck">Site Check</a>
   </div>
+</div></header>
 
-  <div class="grid">
-    <div class="step-card"><h3><span class="step-num">1</span>OS1 first reaction</h3><label for="os1Text">What do you feel sure about first?</label><textarea id="os1Text" placeholder="I feel strongly that..."></textarea><p class="small">Do not censor the first reaction. Name it, then test it.</p></div>
-    <div class="step-card"><h3><span class="step-num">2</span>What OS1 notices</h3><label for="os1Notices">What does this reaction help you notice?</label><textarea id="os1Notices" placeholder="This reaction helps me notice..."></textarea><p class="small">This preserves the value of moral salience, emotion, and lived recognition.</p></div>
-    <div class="step-card"><h3><span class="step-num">3</span>What OS1 may hide</h3><label for="os1Hides">What might this reaction hide, simplify, or overstate?</label><textarea id="os1Hides" placeholder="This reaction might hide..."></textarea><p class="small">This is the metacognitive pause: certainty becomes examinable.</p></div>
-    <div class="step-card"><h3><span class="step-num">4</span>Public claim</h3><label for="publicClaim">What claim could others examine?</label><textarea id="publicClaim" placeholder="Publicly, I can support the claim that..."></textarea><p class="small">Move from reaction to a claim that can be discussed across difference.</p></div>
-    <div class="step-card"><h3><span class="step-num">5</span>Grounds / evidence</h3><label for="publicGrounds">What public evidence supports the claim?</label><textarea id="publicGrounds" placeholder="The evidence or case facts are..."></textarea><p class="small">Grounds are what others can inspect, question, or supplement.</p></div>
-    <div class="step-card"><h3><span class="step-num">6</span>Warrant</h3><label for="publicWarrant">Why do these grounds support this claim?</label><textarea id="publicWarrant" placeholder="These grounds support the claim because..."></textarea><p class="small">The warrant is the PRF window: it reveals what makes the evidence count.</p></div>
-    <div class="step-card"><h3><span class="step-num">7</span>Warrant test</h3><label for="warrantTest">What must be true for this warrant to work?</label><textarea id="warrantTest" placeholder="For this warrant to work, it must be true that..."></textarea><p class="small">Test hidden assumptions before defending the conclusion.</p></div>
-    <div class="step-card"><h3><span class="step-num">8</span>Alternate PRF check</h3><label for="alternatePRF">How might another reasonable PRF see this differently?</label><textarea id="alternatePRF" placeholder="Another reasonable perspective might say..."></textarea><p class="small">This keeps OS2 public rather than merely self-confirming.</p></div>
-    <div class="step-card"><h3><span class="step-num">9</span>Qualifier</h3><label for="publicQualifier">What should you not overclaim?</label><textarea id="publicQualifier" placeholder="I should qualify this claim by admitting..."></textarea><p class="small">Good reasoning names uncertainty, scope, and limits.</p></div>
-    <div class="step-card"><h3><span class="step-num">10</span>Rebuttal</h3><label for="publicRebuttal">What would a reasonable critic ask?</label><textarea id="publicRebuttal" placeholder="A reasonable objection is..."></textarea><p class="small">A rebuttal is not a defeat. It is a stress test.</p></div>
-    <div class="step-card"><h3><span class="step-num">11</span>Repair proposal</h3><label for="publicRepair">What constructive next step follows?</label><textarea id="publicRepair" placeholder="A repair-oriented next step would be..."></textarea><p class="small">The point is wiser action, not just better debate.</p></div>
-    <div class="step-card"><h3><span class="step-num">12</span>PRF revision note</h3><label for="prfRevisionNote">What should change in future perception or recognition?</label><textarea id="prfRevisionNote" placeholder="This should change how I notice..."></textarea><p class="small">This closes the agency loop: new evidence changes the next act of seeing.</p></div>
-  </div>
+<nav class="nav">
+  <a href="#home">Home</a><a href="#challenger">Challenger</a><a href="#demos">Demos</a><a href="#warrant">Warrant</a>
+  <a href="#coherence">Coherence</a><a href="#translator">OS1→OS2</a><a href="#toulmin">Toulmin</a>
+  <a href="#agency">Agency Loop</a><a href="#handoff">Handoff</a><a href="#sitecheck">Site Check</a>
+</nav>
 
-  <div class="actions"><button class="button primary" onclick="generateOS2StudioOutput()">Generate OS2 public reasoning statement</button><button class="button" onclick="sendTranslationToToulmin()">Send to Toulmin fields</button><button class="button" onclick="copyOS2StudioOutput()">Copy translation output</button></div>
-
-  <div class="result-grid"><div class="card"><h3>Generated OS2 statement</h3><div class="output" id="os2StudioOutput">Complete the steps or load a demo, then generate the OS2 statement.</div><p class="small" id="os2StudioCopyStatus"></p></div><div class="card"><h3>Translation quality check</h3><div class="output" id="translationQualityOutput">The quality check will identify whether the translation includes a claim, grounds, warrant, qualifier, rebuttal, repair proposal, and PRF revision note.</div></div></div>
-
-  <div class="card"><h3>Legacy quick draft box</h3><p class="small">This remains for quick teaching use and backward compatibility with earlier builds.</p><label for="os2Text">Short OS2 public reasoning draft</label><textarea id="os2Text" placeholder="Publicly, I can support the claim that..."></textarea><div class="actions"><button class="button" onclick="buildOS2Template()">Build quick OS2 template</button><button class="button" onclick="copyOS2()">Copy quick OS2 draft</button></div></div>
-
-  <table class="table"><thead><tr><th>Move</th><th>Student question</th><th>Public output</th></tr></thead><tbody><tr><td>OS1 notice</td><td>What do I feel sure about?</td><td>A named reaction, not yet treated as proof.</td></tr><tr><td>Meta-cognitive pause</td><td>What might this reaction reveal or hide?</td><td>A humility statement.</td></tr><tr><td>Public claim</td><td>What can I say others could examine?</td><td>A claim with evidence.</td></tr><tr><td>Warrant bridge</td><td>Why does the evidence count?</td><td>The PRF-visible assumption or principle.</td></tr><tr><td>Qualification</td><td>What should I not overclaim?</td><td>A limit, scope condition, or uncertainty note.</td></tr><tr><td>Repair</td><td>What constructive next step follows?</td><td>A repair-oriented proposal.</td></tr></tbody></table>
+<main>
+<section id="home" class="card hero">
+  <div class="kicker">Purpose</div>
+  <h2>The student’s reasoning process becomes the object of study</h2>
+  <p>EECSL examines public cases. The Capability Lab examines simulations and institutional systems. This studio examines the student’s own movement from first moral recognition to public, qualified, rebuttable, repair-oriented reasoning.</p>
+  <div class="notice"><strong>Core insight:</strong><p>The warrant is where OS1 experience begins to become OS2 reasoning. It is also where a student’s PRF becomes visible in argument form.</p></div>
 </section>
 
-<section id="toulmin" class="card"><div class="kicker">Toulmin Practice</div><h2>Argument-building structure</h2><p>This section now includes working fields so demo arguments can be analyzed and copied.</p><div class="grid"><div><label for="claimField">Claim</label><textarea id="claimField"></textarea></div><div><label for="groundsField">Grounds</label><textarea id="groundsField"></textarea></div><div><label for="warrantField">Warrant</label><textarea id="warrantField"></textarea></div><div><label for="backingField">Backing</label><textarea id="backingField"></textarea></div><div><label for="qualifierField">Qualifier</label><textarea id="qualifierField"></textarea></div><div><label for="rebuttalField">Rebuttal</label><textarea id="rebuttalField"></textarea></div></div><div><label for="repairField">Repair-oriented next step</label><textarea id="repairField"></textarea></div><div class="actions"><button class="button primary" onclick="buildToulminOutput()">Build public argument card</button><button class="button" onclick="copyToulminOutput()">Copy argument card</button><button class="button" onclick="clearToulmin()">Clear Toulmin fields</button></div><div class="output" id="toulminOutput">Load a demo or fill in the fields to build a public argument card.</div><p class="small" id="toulminCopyStatus"></p></section>
-<section id="agency-loop" class="card"><div class="kicker">Agency Loop Explainer</div><h2>The two-sided agency model</h2><p>The Studio is built around a dual structure of agency. One side is lived phenomenal certitude: the world shows up as wrong, urgent, unfair, admirable, dangerous, or meaningful. The other side is uncertainty-aware modeling: claims must be public, evidence-sensitive, qualified, rebuttable, and repair-oriented.</p><div class="loop"><div>Experience</div><div>OS1 Recognition</div><div>Metacognitive Pause</div><div>OS2 Argument</div><div>PRF Revision</div></div><div class="notice"><strong>Critical-thinking loop:</strong><p>Experience shapes perception. Perception triggers OS1 recognition. Metacognition slows the reaction. Toulmin structure converts the reaction into OS2 reasoning. New evidence and criticism revise the PRF, changing what the agent notices next time.</p></div></section>
-<section id="frameworks" class="card"><div class="kicker">Framework Accessibility Map</div><h2>Ethical and philosophical lenses</h2><table class="table"><thead><tr><th>Framework</th><th>What it helps students see</th><th>Common risk</th></tr></thead><tbody><tr><td>Virtue ethics</td><td>Character, habits, agency formation, exemplary action</td><td>Blaming individuals while ignoring systems</td></tr><tr><td>Deontology</td><td>Duties, rights, respect, persons as ends</td><td>Ignoring material conditions that make rights ineffective</td></tr><tr><td>Consequentialism</td><td>Outcomes, risk, scale, future effects</td><td>Flattening persons into aggregates</td></tr><tr><td>Care ethics</td><td>Vulnerability, relationship, dependency, response</td><td>Over-personalizing structural problems</td></tr><tr><td>Social contract / capabilities</td><td>Fairness, institutions, real opportunity, agency-supporting conditions</td><td>Assuming formal rights are enough</td></tr><tr><td>Functional equivalence</td><td>Coordination across different PRFs without OS1 consensus</td><td>Confusing agreement in action with agreement in worldview</td></tr></tbody></table></section>
-<section id="vocabulary" class="card"><div class="kicker">Vocabulary Bridge</div><h2>Shared language across the course</h2><table class="table"><thead><tr><th>Vocabulary</th><th>Plain-language use</th><th>Critical-thinking function</th></tr></thead><tbody><tr><td>OS1</td><td>Felt certainty, first reaction, lived moral perception</td><td>Notices what matters before public argument is complete.</td></tr><tr><td>OS2</td><td>Shared, public, testable reasoning</td><td>Makes claims accountable across difference.</td></tr><tr><td>Warrant</td><td>The bridge from evidence to claim</td><td>Reveals hidden assumptions, values, and PRF structure.</td></tr><tr><td>Coherence Bridge</td><td>Reasoning-accessibility check</td><td>Helps choose the next reasoning support before argument construction.</td></tr><tr><td>Toulmin</td><td>Argument structure</td><td>Separates claim, grounds, warrant, backing, qualifier, and rebuttal.</td></tr><tr><td>PRF</td><td>Personal Reality Framework</td><td>Names how beliefs, rules, ontology, and authenticity shape perception.</td></tr></tbody></table></section>
-<section id="handoff" class="card"><div class="kicker">Case Handoff Library</div><h2>Connect to public cases and simulations</h2><div class="grid"><article class="card"><h3>EECSL</h3><p>Public empirical ethics cases for institutional analysis.</p><a class="button primary" href="https://rmertzman-tech.github.io/empirical-ethics-case-simulation-library/index.html">Open EECSL</a></article><article class="card"><h3>Capability Lab</h3><p>Public simulations for emergence, coordination, warning, and repair.</p><a class="button primary" href="https://rmertzman-tech.github.io/capability-lab-public-studio/">Open Capability Lab</a></article><article class="card"><h3>Challenger</h3><button class="button primary" onclick="loadDemo('challenger')">Load Challenger Demo</button></article><article class="card"><h3>Schelling</h3><button class="button primary" onclick="loadDemo('schelling')">Load Schelling Demo</button></article></div></section>
-<section id="site-check" class="card"><div class="kicker">Site Check</div><h2>Single-file deployment diagnostic</h2><p>This build requires only one HTML file at the repository root. The buttons use internal anchors, not separate local pages.</p><div class="diagnostic"><strong>Current browser location:</strong><pre id="locationOutput">JavaScript disabled or not yet run.</pre><div class="actions"><button class="button primary" onclick="runDiagnostic()">Run diagnostic</button><a class="button" href="#top">Back to top</a></div></div><h3>Expected repository shape</h3><pre>index.html
-README.md
-.nojekyll</pre></section>
+<section id="challenger" class="card challenger">
+  <div class="kicker">Gold Standard Classroom Demo</div>
+  <h2>Challenger Classroom-Ready Walkthrough</h2>
+  <p>This is the first complete teaching demonstration. It loads the scenario, coherence sliders, all 12 translator fields, Toulmin card, dynamic guidance, and instructor notes.</p>
+  <div class="notice"><strong>Central warrant failure:</strong><p>The deeper reasoning failure is treating unresolved uncertainty as permission to proceed under catastrophic stakes.</p></div>
+  <div class="actions">
+    <button class="primary" onclick="launchDemo('challenger')">Launch full Challenger classroom demo</button>
+    <button onclick="showInstructorScript()">Instructor 75-minute script</button>
+    <button onclick="showStudentScript()">Student self-guided version</button>
+    <button onclick="copyChallengerPackage()">Copy Challenger package</button>
+  </div>
+  <div id="challengerOutput" class="focus">Launch the Challenger demo to populate the whole studio.</div>
+  <p class="small" id="challengerStatus"></p>
+</section>
+
+<section id="demos" class="card">
+  <div class="kicker">Demo Library</div>
+  <h2>Ready-to-use teaching examples</h2>
+  <div class="grid">
+    <article class="card"><h3>Challenger Launch Decision</h3><p><span class="pill danger">Catastrophic risk</span> <span class="pill">protected voice</span></p><p>Best for teaching uncertainty, dissent, professional responsibility, and catastrophic stakes.</p><button class="primary" onclick="launchDemo('challenger')">Load</button></article>
+    <article class="card"><h3>Schelling Emergence</h3><p><span class="pill">local rules</span> <span class="pill">macro-patterns</span></p><p>Best for teaching responsibility after emergent patterns become visible.</p><button class="primary" onclick="launchDemo('schelling')">Load</button></article>
+    <article class="card"><h3>Everyday Group Project</h3><p><span class="pill">fairness</span> <span class="pill">repair</span></p><p>Best for introducing the method with a low-stakes student example.</p><button class="primary" onclick="launchDemo('everyday')">Load</button></article>
+  </div>
+</section>
+
+<section id="warrant" class="card">
+  <div class="kicker">Warrant Bridge</div>
+  <h2>Why the warrant matters</h2>
+  <p>The claim shows what a student concludes. The grounds show what evidence the student notices. The warrant shows why that evidence is being treated as relevant.</p>
+  <div class="blue"><strong>Deeper philosopher modeling:</strong><p>MCCTS is the accessible practice environment. For deeper exploration of how specific philosophical traditions structure warrants, use the IEIA / Philosophical Traditions tool in the Case Handoff Library.</p></div>
+  <table class="table">
+    <thead><tr><th>Question</th><th>What it reveals</th></tr></thead>
+    <tbody>
+      <tr><td>What must be true for these grounds to support this claim?</td><td>The hidden warrant.</td></tr>
+      <tr><td>What does the warrant make visible?</td><td>The value, duty, harm, or model being prioritized.</td></tr>
+      <tr><td>What does the warrant hide?</td><td>The alternate PRF, framework, voice, or assumption being backgrounded.</td></tr>
+      <tr><td>What should change in future perception?</td><td>The PRF revision note.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="coherence" class="card">
+  <div class="kicker">Dynamic Coherence Bridge</div>
+  <h2>Reasoning accessibility and framework guidance</h2>
+  <p>This is not a clinical or grading instrument. It is a classroom guide for deciding whether to calm, clarify, protect voice, widen time horizon, or proceed to argument structure.</p>
+  <div class="grid">
+    <div class="slider-card"><div class="slider-head"><label for="body">Body / stress readiness</label><span class="slider-value" id="bodyVal">65</span></div><input id="body" type="range" min="0" max="100" value="65"><p class="small">Availability for careful reasoning rather than threat response.</p></div>
+    <div class="slider-card"><div class="slider-head"><label for="agency">Identity / agency clarity</label><span class="slider-value" id="agencyVal">70</span></div><input id="agency" type="range" min="0" max="100" value="70"><p class="small">Clarity about role: witness, participant, professional, citizen, designer, or repair partner.</p></div>
+    <div class="slider-card"><div class="slider-head"><label for="clarity">Cognitive clarity</label><span class="slider-value" id="clarityVal">72</span></div><input id="clarity" type="range" min="0" max="100" value="72"><p class="small">Readiness to separate claim, grounds, warrant, qualifier, and rebuttal.</p></div>
+    <div class="slider-card"><div class="slider-head"><label for="voice">Social trust / protected voice</label><span class="slider-value" id="voiceVal">62</span></div><input id="voice" type="range" min="0" max="100" value="62"><p class="small">Safety for dissent, disagreement, and hearing suppressed knowledge.</p></div>
+    <div class="slider-card"><div class="slider-head"><label for="time">Temporal horizon</label><span class="slider-value" id="timeVal">68</span></div><input id="time" type="range" min="0" max="100" value="68"><p class="small">Ability to project consequences, repair, and future burden.</p></div>
+  </div>
+  <div class="actions">
+    <button class="primary" onclick="analyzeCoherence()">Generate dynamic guidance</button>
+    <button onclick="setCoherencePreset('ready')">Ready</button>
+    <button onclick="setCoherencePreset('heated')">Heated</button>
+    <button onclick="setCoherencePreset('silenced')">Low voice</button>
+    <button onclick="setCoherencePreset('challenger')">Challenger</button>
+  </div>
+  <div class="two">
+    <div class="card"><h3>Reasoning accessibility</h3><div class="score" id="score">—</div><div class="meter"><div class="meter-bar" id="bar"></div></div><div id="coherenceOutput" class="output">Generate guidance.</div></div>
+    <div class="card"><h3>Framework and classroom guidance</h3><div id="frameworkOutput" class="focus">Dynamic framework guidance will appear here.</div><div id="classroomOutput" class="focus">Classroom facilitation guidance will appear here.</div></div>
+  </div>
+</section>
+
+<section id="translator" class="card">
+  <div class="kicker">OS1 → OS2 Interactive Translation Studio</div>
+  <h2>Translate felt certainty into public reasoning</h2>
+  <div class="grid">
+    <div class="step-card"><h3>1. OS1 first reaction</h3><label for="os1">What do you feel sure about first?</label><textarea id="os1"></textarea></div>
+    <div class="step-card"><h3>2. What OS1 notices</h3><label for="notices">What does this reaction help you notice?</label><textarea id="notices"></textarea></div>
+    <div class="step-card"><h3>3. What OS1 may hide</h3><label for="hides">What might this reaction hide, simplify, or overstate?</label><textarea id="hides"></textarea></div>
+    <div class="step-card"><h3>4. Public claim</h3><label for="claim">What claim could others examine?</label><textarea id="claim"></textarea></div>
+    <div class="step-card"><h3>5. Grounds / evidence</h3><label for="grounds">What public evidence supports the claim?</label><textarea id="grounds"></textarea></div>
+    <div class="step-card"><h3>6. Warrant</h3><label for="warrantField">Why do these grounds support this claim?</label><textarea id="warrantField"></textarea></div>
+    <div class="step-card"><h3>7. Warrant test</h3><label for="warrantTest">What must be true for this warrant to work?</label><textarea id="warrantTest"></textarea></div>
+    <div class="step-card"><h3>8. Alternate PRF check</h3><label for="alternate">Pick one lens you did not use. What would it make salient?</label><textarea id="alternate"></textarea><div class="actions"><button onclick="lensPrompt('care')">Care</button><button onclick="lensPrompt('virtue')">Virtue</button><button onclick="lensPrompt('duty')">Duty</button><button onclick="lensPrompt('consequence')">Consequences</button><button onclick="lensPrompt('capability')">Capabilities</button></div></div>
+    <div class="step-card"><h3>9. Qualifier</h3><label for="qualifier">What should you not overclaim?</label><textarea id="qualifier"></textarea></div>
+    <div class="step-card"><h3>10. Rebuttal</h3><label for="rebuttal">What would a reasonable critic ask?</label><textarea id="rebuttal"></textarea></div>
+    <div class="step-card"><h3>11. Repair proposal</h3><label for="repair">What constructive next step follows?</label><textarea id="repair"></textarea></div>
+    <div class="step-card prf"><h3>12. PRF revision note</h3><label for="revision">What should change in future perception or recognition?</label><textarea id="revision"></textarea><p class="small"><strong>This is the most important output.</strong> The goal is not to win the argument but to change how you will perceive next time.</p><div class="actions"><button onclick="revisionExample('uncertainty')">Uncertainty</button><button onclick="revisionExample('efficiency')">Efficiency</button><button onclick="revisionExample('voice')">Protected voice</button></div></div>
+  </div>
+  <div class="actions">
+    <button class="primary" onclick="generateTranslation()">Generate OS2 statement</button>
+    <button onclick="sendToToulmin()">Send to Toulmin</button>
+    <button onclick="copyTranslation()">Copy output</button>
+    <button class="warn" onclick="clearTranslator()">Clear</button>
+  </div>
+  <div class="two">
+    <div><h3>Generated OS2 statement</h3><div id="translationOutput" class="output">Load a demo or complete the steps.</div><p class="small" id="translationStatus"></p></div>
+    <div><h3>Translation quality check</h3><div id="qualityOutput" class="focus">The quality check will identify whether the output contains the key reasoning elements.</div></div>
+  </div>
+</section>
+
+<section id="toulmin" class="card">
+  <div class="kicker">Toulmin Card</div>
+  <h2>Public argument structure</h2>
+  <div class="grid">
+    <div><label for="tClaim">Claim</label><textarea id="tClaim"></textarea></div>
+    <div><label for="tGrounds">Grounds</label><textarea id="tGrounds"></textarea></div>
+    <div><label for="tWarrant">Warrant</label><textarea id="tWarrant"></textarea></div>
+    <div><label for="tBacking">Backing</label><textarea id="tBacking"></textarea></div>
+    <div><label for="tQualifier">Qualifier</label><textarea id="tQualifier"></textarea></div>
+    <div><label for="tRebuttal">Rebuttal</label><textarea id="tRebuttal"></textarea></div>
+  </div>
+  <label for="tRepair">Repair-oriented next step</label><textarea id="tRepair"></textarea>
+  <div class="actions"><button class="primary" onclick="generateToulmin()">Generate card</button><button onclick="copyToulmin()">Copy card</button></div>
+  <div id="toulminOutput" class="output">Send from the translator or fill in fields.</div>
+</section>
+
+<section id="agency" class="card">
+  <div class="kicker">Agency Loop</div>
+  <h2>The two-sided model of agency</h2>
+  <p>One side is lived phenomenal certitude: the world shows up as wrong, urgent, unfair, admirable, dangerous, or meaningful. The other side is uncertainty-aware modeling: claims must be public, evidence-sensitive, qualified, rebuttable, and repair-oriented.</p>
+  <div class="loop"><div>Experience</div><div>OS1 Recognition</div><div>Metacognitive Pause</div><div>OS2 Argument</div><div>PRF Revision</div></div>
+</section>
+
+<section id="handoff" class="card">
+  <div class="kicker">Case Handoff Library</div>
+  <h2>Relationship to the EBB ecosystem</h2>
+  <div class="grid">
+    <article class="card"><h3>EECSL</h3><p>Public empirical ethics cases.</p><a class="button primary" href="https://rmertzman-tech.github.io/empirical-ethics-case-simulation-library/index.html">Open EECSL</a></article>
+    <article class="card"><h3>Capability Lab</h3><p>Public simulations for emergence, warning, coordination, and repair.</p><a class="button primary" href="https://rmertzman-tech.github.io/capability-lab-public-studio/">Open Capability Lab</a></article>
+    <article class="card"><h3>IEIA / Philosophical Traditions Tool</h3><p>Deeper philosopher and tradition modeling for warrants.</p><a class="button primary" href="https://rmertzman-tech.github.io/IEIA-Toulmin2/">Open IEIA Toulmin Tool</a></article>
+  </div>
+</section>
+
+<section id="sitecheck" class="card">
+  <div class="kicker">Site Check</div>
+  <h2>Root-safe deployment diagnostic</h2>
+  <p>This build requires only <code>index.html</code>, <code>README.md</code>, and <code>.nojekyll</code>.</p>
+  <div class="actions"><button class="primary" onclick="siteCheck()">Run diagnostic</button><a class="button" href="#top">Back to top</a></div>
+  <pre id="siteOutput">Diagnostic not yet run.</pre>
+</section>
 </main>
-<footer><p class="footer-note">Meta-Cognitive Critical Thinking Studio · Phase R single-file build · Generated 2026-05-27 20:03. Public teaching materials only; no private student information should be entered here.</p></footer>
+
+<footer><p class="footer-note">Meta-Cognitive Critical Thinking Studio · Phase R.1 clean single-file build · Generated 2026-05-27 21:13. Public teaching materials only; no private student information should be entered here.</p></footer>
+
 <script>
-const sliders=[{id:"bodyStress",label:"Body / stress readiness",toulmin:"Slow down before claim-making. Start with careful grounds and avoid turning urgency into proof.",lens:"Care ethics and virtue ethics may be accessible first because they notice vulnerability, attention, and practical wisdom."},{id:"identityAgency",label:"Identity / agency clarity",toulmin:"Clarify your role and claim. Ask: am I speaking as witness, analyst, participant, or designer?",lens:"Virtue ethics and social contract reasoning may help clarify agency, responsibility, and institutional role."},{id:"cognitiveClarity",label:"Cognitive clarity",toulmin:"Focus on claim, grounds, warrant, and qualifier. Do not skip from evidence to conclusion too quickly.",lens:"Deontology, consequentialism, and evidence-policy reasoning become more accessible when claim structure is clear."},{id:"socialVoice",label:"Social trust / protected voice",toulmin:"Invite counter-voice and possible rebuttal before finalizing the claim. Ask whose knowledge is being heard.",lens:"Care ethics, epistemic justice, and social contract/capabilities reasoning may reveal silencing or unfair burden."},{id:"temporalHorizon",label:"Temporal horizon",toulmin:"Add qualifier, consequence, and repair horizon. Ask what this claim commits us to over time.",lens:"Consequentialism, capabilities, commons governance, and functional equivalence may help connect present judgment to future repair."}];
-const presets={ready:{bodyStress:78,identityAgency:82,cognitiveClarity:84,socialVoice:76,temporalHorizon:80},heated:{bodyStress:32,identityAgency:64,cognitiveClarity:52,socialVoice:48,temporalHorizon:45},confused:{bodyStress:63,identityAgency:58,cognitiveClarity:28,socialVoice:62,temporalHorizon:50},silenced:{bodyStress:55,identityAgency:50,cognitiveClarity:64,socialVoice:22,temporalHorizon:58},reset:{bodyStress:65,identityAgency:70,cognitiveClarity:72,socialVoice:62,temporalHorizon:68}};
-const demos={challenger:{title:"Challenger Launch Decision",tag:"Uncertainty · protected voice · catastrophic risk",scenario:"Engineers raise concerns about O-ring performance under unusually cold launch conditions. Institutional pressure treats uncertainty as acceptable enough to proceed.",os1:"I feel strongly that the launch should not proceed because ignoring unresolved engineering risk feels reckless and disrespectful to the people whose lives depend on the decision.",os2:"Publicly, I can support the claim that the launch should be delayed because available evidence shows unresolved cold-weather risk in a system where failure could be catastrophic.",weak:"The launch should go forward because the data is not absolutely conclusive.",strong:"Because the available evidence shows unresolved risk under cold-weather conditions, and because failure would impose catastrophic harm on others, the launch decision should be delayed unless the risk can be publicly justified under a stronger safety standard.",claim:"The launch should be delayed.",grounds:"Available evidence shows unresolved cold-weather risk involving O-ring performance.",warrant:"When stakes are catastrophic, unresolved safety risk should block action unless the risk can be publicly justified under a stronger standard.",backing:"Professional responsibility, duty of care, precaution under uncertainty, and respect for persons affected by technical decisions.",qualifier:"Unless the risk can be transparently justified under a safety standard appropriate to catastrophic failure.",rebuttal:"Delay has organizational and financial costs, but those costs do not override unresolved catastrophic risk.",repair:"Create protected dissent channels, require transparent risk review, and prevent schedule pressure from overriding safety evidence.",sliders:{bodyStress:35,identityAgency:70,cognitiveClarity:58,socialVoice:28,temporalHorizon:45},lens:"Deontology, consequentialism under uncertainty, epistemic justice, and professional virtue ethics.",mistake:"Treating lack of absolute certainty as permission to proceed.",prf:"This warrant reveals whether the agent treats safety, authority, schedule, and uncertainty as morally decisive."},
-schelling:{title:"Schelling Emergence Model",tag:"Local rules · macro-patterns · hidden costs",scenario:"A classroom simulation shows that modest local preferences can generate large-scale segregation or clustering even when no individual explicitly intends that outcome.",os1:"I feel surprised that small individual preferences can produce a large unfair pattern even when no one directly plans the result.",os2:"Publicly, I can support the claim that responsibility for an emergent pattern cannot be reduced only to individual intentions because local rules can produce harmful macro-outcomes.",weak:"No one intended segregation, so no one has responsibility for the pattern.",strong:"Even if individual agents do not intend the macro-pattern, once the pattern is visible, institutions and participants have responsibility to examine the local rules and repair conditions that keep reproducing it.",claim:"Emergent harmful patterns require structural analysis and repair, not only intention-based blame.",grounds:"The simulation shows macro-level clustering emerging from local rules.",warrant:"If repeated local rules predictably generate harmful patterns, responsibility includes redesigning the conditions that reproduce those patterns.",backing:"Complexity theory, social systems ethics, and institutional responsibility.",qualifier:"This does not mean every participant intended the harm or bears identical responsibility.",rebuttal:"Some may argue responsibility requires intention; the response is that repair responsibility can arise after the harmful pattern becomes visible.",repair:"Identify thresholds, shared spaces, mobility access, and repair conditions that reduce harmful clustering.",sliders:{bodyStress:72,identityAgency:76,cognitiveClarity:82,socialVoice:74,temporalHorizon:78},lens:"Consequentialism, social contract theory, capabilities, and complexity-informed ethics.",mistake:"Assuming that no bad intention means no ethical responsibility.",prf:"This warrant reveals whether the agent’s model of responsibility includes systems and emergence."},
-nursing:{title:"Florida Nursing Homes / Visible Parasite",tag:"Dependency · care · ownership opacity · repair",scenario:"A dependent resident experiences harms that are difficult to see because ownership structures, staffing pressures, and public costs are not fully visible in ordinary care interactions.",os1:"I feel strongly that vulnerable residents should not bear the cost of systems that hide responsibility and weaken care.",os2:"Publicly, I can support the claim that care institutions should be evaluated not only by formal compliance but by whether they sustain agency-supporting conditions for dependent persons.",weak:"The nursing home is wrong because it feels uncaring.",strong:"Because residents depend on institutional conditions for safety, dignity, and voice, and because ownership opacity and staffing pressure can transfer hidden costs onto vulnerable people, evaluation should include visible ledgers of care burden, accountability, and repair.",claim:"Care institutions should be evaluated by visible agency-supporting conditions, not only formal compliance.",grounds:"Dependency, staffing pressure, ownership opacity, and public burden can make harms difficult to see.",warrant:"When persons are dependent on institutions for basic agency, hidden cost-transfer and opaque responsibility are ethically significant harms.",backing:"Care ethics, capabilities, dignity, public accountability, and institutional design ethics.",qualifier:"The claim should distinguish documented evidence from teaching-proxy interpretation.",rebuttal:"Some facilities may comply formally or face real constraints, but compliance alone does not settle whether agency-supporting care exists.",repair:"Make care burdens, staffing conditions, ownership responsibilities, and repair pathways visible to residents, families, workers, and regulators.",sliders:{bodyStress:50,identityAgency:66,cognitiveClarity:62,socialVoice:38,temporalHorizon:72},lens:"Care ethics, capabilities, deontology, public accountability, and functional repair.",mistake:"Reducing care ethics to private kindness while ignoring institutional architecture.",prf:"This warrant reveals whether the agent sees dependency as a structural ethical condition."},
-highered:{title:"Higher Education IPS",tag:"Formal access · actual capability · invisible ledger",scenario:"Students may have formal access to higher education while hidden institutional conditions shape who can actually succeed, persist, and develop agency.",os1:"I feel that it is unfair when formal access exists but the real conditions for success are unevenly distributed.",os2:"Publicly, I can support the claim that educational justice requires examining actual capability, not merely formal availability.",weak:"Students have access, so the system is fair.",strong:"Formal access is ethically incomplete when students face unequal support conditions, invisible labor burdens, or institutional designs that reduce their real capability to learn and persist.",claim:"Educational justice requires actual capability, not merely formal access.",grounds:"Students may face unequal advising, financial pressure, time burden, belonging barriers, or institutional complexity.",warrant:"A right or opportunity is not fully effective unless the conditions needed to use it are realistically available.",backing:"Capabilities approach, social contract theory, educational ethics, and institutional responsibility.",qualifier:"The claim should be supported with specific evidence about which conditions are unequal and how they affect students.",rebuttal:"Some may argue students are individually responsible; the response is that responsibility and agency require real conditions for action.",repair:"Map hidden burdens, improve navigation support, reduce unnecessary complexity, and design for capability.",sliders:{bodyStress:60,identityAgency:72,cognitiveClarity:68,socialVoice:55,temporalHorizon:75},lens:"Nussbaum-style capabilities, Rawlsian fairness, care ethics, and educational justice.",mistake:"Equating formal availability with real opportunity.",prf:"This warrant reveals whether the agent treats rights as formal permissions or as capability-supported opportunities."},
-everyday:{title:"Everyday Group Project Breakdown",tag:"Student practice · fairness · voice · repair",scenario:"In a group project, one student is doing most of the work while others contribute unevenly. The group has not openly discussed expectations, constraints, or repair.",os1:"I feel frustrated because it seems unfair that one person is carrying the project while others benefit.",os2:"Publicly, I can support the claim that the group needs a transparent repair conversation because unequal workload without shared expectations undermines fairness and trust.",weak:"The other students are lazy and should get a bad grade.",strong:"Because the workload has become unequal and expectations are unclear, the group should hold a structured repair conversation that names tasks, constraints, responsibilities, and next steps before blame becomes fixed.",claim:"The group needs a transparent repair conversation.",grounds:"Workload is unequal and expectations have not been clearly shared.",warrant:"Fair collaboration requires visible responsibilities, voice, and repair before resentment hardens into blame.",backing:"Care ethics, fairness, practical wisdom, and cooperative responsibility.",qualifier:"Some members may have constraints not yet known to the group.",rebuttal:"A student doing most of the work may reasonably feel harmed; repair should not excuse repeated nonparticipation.",repair:"Create a task map, agree on deadlines, ask about constraints, and set consequences for future nonparticipation.",sliders:{bodyStress:44,identityAgency:64,cognitiveClarity:58,socialVoice:42,temporalHorizon:62},lens:"Care ethics, virtue ethics, fairness, and restorative practice.",mistake:"Moving directly from frustration to fixed character judgment.",prf:"This warrant reveals whether the agent sees fairness as punishment, repair, contribution, or shared accountability."}};
-const argumentCards=[{id:"challengerWeak",title:"Challenger weak argument",argument:"The launch should go forward because the data is not absolutely conclusive.",issue:"This treats uncertainty as permission to proceed even though the stakes are catastrophic.",claim:"The launch should go forward.",grounds:"The evidence is not absolutely conclusive.",warrant:"Action is acceptable unless risk evidence is certain.",hidden:"This warrant hides the moral significance of catastrophic stakes and professional duty under uncertainty.",improved:"When stakes are catastrophic, unresolved safety risk should prevent action unless the risk can be publicly justified under a stronger safety standard."},{id:"schellingWeak",title:"Schelling weak argument",argument:"No one intended segregation, so no one is responsible for the segregated pattern.",issue:"This assumes responsibility depends only on intention and ignores visible emergent harm.",claim:"No one is responsible for the pattern.",grounds:"No individual intended the macro-pattern.",warrant:"Responsibility exists only when harm is directly intended.",hidden:"This warrant hides systemic responsibility and repair responsibility after patterns become visible.",improved:"Once a harmful emergent pattern is visible, responsibility includes redesigning the rules and conditions that reproduce it."},{id:"nursingWeak",title:"Nursing homes weak argument",argument:"The situation is wrong because it feels uncaring.",issue:"This names an important OS1 perception but does not yet provide public evidence, warrant, or repair.",claim:"The situation is wrong.",grounds:"It feels uncaring.",warrant:"What feels uncaring is ethically wrong.",hidden:"This warrant may be morally perceptive, but it needs public grounds about dependency, agency, staffing, visibility, and accountability.",improved:"Because residents depend on institutions for safety, dignity, and voice, hidden cost-transfer and opaque responsibility are ethically significant harms."},{id:"higheredWeak",title:"Higher Education IPS weak argument",argument:"Students have access to college, so the system is fair.",issue:"This equates formal access with actual capability.",claim:"The system is fair.",grounds:"Students have formal access.",warrant:"Formal availability is enough for fairness.",hidden:"This warrant hides unequal support conditions, invisible burdens, and real barriers to using formal opportunities.",improved:"A right or opportunity is ethically incomplete unless the conditions needed to use it are realistically available."},{id:"everydayWeak",title:"Group project weak argument",argument:"The other students are lazy and should get a bad grade.",issue:"This jumps from unequal contribution to fixed character judgment before examining constraints and repair.",claim:"Other group members should be penalized.",grounds:"One student is doing most of the work.",warrant:"Unequal contribution proves laziness and deserves punishment.",hidden:"This warrant hides possible constraints, unclear expectations, and repair steps, while still recognizing a real fairness problem.",improved:"Fair collaboration requires visible responsibilities, voice, and repair before resentment hardens into blame."}];
-let activeDemoId=null,lastSummary="",activeDemoSummary="",lastArgumentText="",lastOS2StudioText="";
-function esc(str){return String(str).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
-function getScores(){const scores={};sliders.forEach(s=>scores[s.id]=Number(document.getElementById(s.id).value));return scores;}
-function avg(values){return Math.round(values.reduce((a,b)=>a+b,0)/values.length);}
-function classify(score){if(score>=78)return{label:"High access",pill:"",message:"You appear ready to move into Toulmin structure and framework comparison. Keep a qualifier and rebuttal in view so confidence does not become overclaiming."};if(score>=60)return{label:"Workable access",pill:"",message:"You have enough access for public reasoning, but the next step should include one explicit support: clarification, voice protection, or qualification."};if(score>=42)return{label:"Constrained access",pill:"warn",message:"Proceed carefully. The next best move is not a final argument. Start with naming the OS1 reaction, clarifying evidence, and adding a qualifier."};return{label:"Low access",pill:"danger",message:"Do not rush into debate. Begin by stabilizing the discussion space, lowering heat, naming uncertainty, and protecting voice before constructing the argument."};}
-function lowestDimension(scores){return sliders.slice().sort((a,b)=>scores[a.id]-scores[b.id])[0];}
-function buildAdvice(score,low,scores){const lowScore=scores[low.id];let move="";if(low.id==="bodyStress")move="Lower heat before reasoning. Use a brief pause, restate the issue neutrally, and name what evidence is public.";if(low.id==="identityAgency")move="Clarify agency and role. Ask whether you are analyzing as a witness, participant, critic, designer, or repair partner.";if(low.id==="cognitiveClarity")move="Clarify the argument skeleton. Write only one claim, one piece of evidence, and one warrant before adding theory.";if(low.id==="socialVoice")move="Protect voice. Ask whose knowledge is missing, who may be silent, and what would make disagreement safer.";if(low.id==="temporalHorizon")move="Widen the time horizon. Ask what happens next, what repair would require, and what future burden the claim creates.";const status=classify(score);return{status,lowScore,move,toulmin:low.toulmin,lens:low.lens};}
-function analyzeCoherence(){const scores=getScores(),score=avg(Object.values(scores)),low=lowestDimension(scores),advice=buildAdvice(score,low,scores),scenario=document.getElementById("publicScenario").value.trim();document.getElementById("coherenceScore").textContent=String(score);document.getElementById("coherenceBar").style.width=score+"%";const pill=document.getElementById("statusPill");pill.textContent=advice.status.label;pill.className="pill "+advice.status.pill;const ordered=sliders.map(s=>`${s.label}: ${scores[s.id]}`).join("\\n");const scenarioLine=scenario?`\\nPublic scenario note: ${scenario}\\n`:"";lastSummary=`Meta-Cognitive Critical Thinking Studio — Coherence Bridge Summary
+const DEMOS = {"challenger": {"title": "Challenger Launch Decision", "tag": "Uncertainty \u00b7 protected voice \u00b7 catastrophic risk", "scenario": "Engineers raise concerns about O-ring performance under unusually cold launch conditions. Institutional pressure treats uncertainty as acceptable enough to proceed.", "os1": "I feel strongly that the launch should not proceed because ignoring unresolved engineering risk feels reckless and disrespectful to the people whose lives depend on the decision.", "notices": "This reaction notices unresolved risk, institutional pressure, vulnerable lives, and the danger of treating technical uncertainty as a reason to proceed.", "hides": "This reaction may hide the organizational pressures, uncertainty about evidence, and the need to distinguish moral outrage from a public safety argument.", "claim": "The launch should be delayed.", "grounds": "Available evidence shows unresolved cold-weather risk involving O-ring performance.", "warrant": "When stakes are catastrophic, unresolved safety risk should block action unless the risk can be publicly justified under a stronger standard.", "warrantTest": "This warrant works if catastrophic stakes require a higher burden of public justification than ordinary technical uncertainty would require.", "alternatePRF": "A care ethics lens would ask whose vulnerability was ignored. A virtue ethics lens would ask what professional courage required. A deontological lens would ask whether persons were treated as ends. A consequentialist lens would ask how catastrophic risk should be evaluated under uncertainty.", "qualifier": "Unless the risk can be transparently justified under a safety standard appropriate to catastrophic failure.", "rebuttal": "Delay has organizational and financial costs, but those costs do not override unresolved catastrophic risk.", "repair": "Create protected dissent channels, require transparent risk review, and prevent schedule pressure from overriding safety evidence.", "revision": "I will now notice when uncertainty is being used to excuse action rather than trigger caution, especially when vulnerable persons bear catastrophic risk.", "sliders": {"body": 35, "agency": 70, "clarity": 58, "voice": 28, "time": 45}, "weak": "The launch should go forward because the data is not absolutely conclusive.", "strong": "Because the available evidence shows unresolved risk under cold-weather conditions, and because failure would impose catastrophic harm on others, the launch decision should be delayed unless the risk can be publicly justified under a stronger safety standard."}, "schelling": {"title": "Schelling Emergence Model", "tag": "Local rules \u00b7 macro-patterns \u00b7 hidden costs", "scenario": "A classroom simulation shows that modest local preferences can generate large-scale segregation or clustering even when no individual explicitly intends that outcome.", "os1": "I feel surprised that small individual preferences can produce a large unfair pattern even when no one directly plans the result.", "notices": "This reaction notices that emergent patterns can be ethically serious even when individual intentions are modest.", "hides": "It may hide differences between blame, responsibility, repair responsibility, and institutional design responsibility.", "claim": "Emergent harmful patterns require structural analysis and repair, not only intention-based blame.", "grounds": "The simulation shows macro-level clustering emerging from local rules.", "warrant": "If repeated local rules predictably generate harmful patterns, responsibility includes redesigning the conditions that reproduce those patterns.", "warrantTest": "This warrant works if the pattern is visible, repeatable, harmful, and responsive to changed conditions.", "alternatePRF": "A deontological lens may ask whether persons are treated fairly by the rules. A consequentialist lens may focus on aggregate outcomes. A care lens may ask who becomes isolated or burdened.", "qualifier": "This does not mean every participant intended the harm or bears identical responsibility.", "rebuttal": "Some may argue responsibility requires intention; the response is that repair responsibility can arise after the harmful pattern becomes visible.", "repair": "Identify thresholds, shared spaces, mobility access, and repair conditions that reduce harmful clustering.", "revision": "I will now notice when I am assuming that lack of bad intention means lack of ethical responsibility.", "sliders": {"body": 72, "agency": 76, "clarity": 82, "voice": 74, "time": 78}, "weak": "No one intended segregation, so no one is responsible for the pattern.", "strong": "Even if individual agents do not intend the macro-pattern, once the pattern is visible, institutions and participants have responsibility to examine the local rules and repair conditions that keep reproducing it."}, "everyday": {"title": "Everyday Group Project Breakdown", "tag": "Fairness \u00b7 voice \u00b7 repair", "scenario": "In a group project, one student is doing most of the work while others contribute unevenly. The group has not openly discussed expectations, constraints, or repair.", "os1": "I feel frustrated because it seems unfair that one person is carrying the project while others benefit.", "notices": "This reaction notices unfair burden and a breakdown in shared responsibility.", "hides": "It may hide unclear expectations, unseen constraints, and the possibility of repair before blame hardens.", "claim": "The group needs a transparent repair conversation.", "grounds": "Workload is unequal and expectations have not been clearly shared.", "warrant": "Fair collaboration requires visible responsibilities, voice, and repair before resentment hardens into blame.", "warrantTest": "This warrant works if the group has not yet clearly named tasks, constraints, and responsibilities.", "alternatePRF": "A virtue lens would ask what practical wisdom and fairness require. A care lens would ask about constraints. A duty lens would ask what each member owes the group.", "qualifier": "Some members may have constraints not yet known to the group.", "rebuttal": "A student doing most of the work may reasonably feel harmed; repair should not excuse repeated nonparticipation.", "repair": "Create a task map, agree on deadlines, ask about constraints, and set consequences for future nonparticipation.", "revision": "I will now notice when I am moving from frustration directly to fixed character judgment before checking repair conditions.", "sliders": {"body": 44, "agency": 64, "clarity": 58, "voice": 42, "time": 62}, "weak": "The other students are lazy and should get a bad grade.", "strong": "Because the workload has become unequal and expectations are unclear, the group should hold a structured repair conversation that names tasks, constraints, responsibilities, and next steps before blame becomes fixed."}};
+let activeDemo = null;
+let lastTranslation = "";
+let lastToulmin = "";
+let lastChallenger = "";
 
-Reasoning accessibility estimate: ${score} / 100
-Status: ${advice.status.label}
-Lowest support dimension: ${low.label} (${advice.lowScore} / 100)
+const SLIDERS = ["body","agency","clarity","voice","time"];
 
-Scores:
-${ordered}
-${scenarioLine}
-Recommended next move:
-${advice.move}
+function el(id) { return document.getElementById(id); }
+function val(id) { return el(id).value.trim(); }
+function set(id, v) { if (el(id)) el(id).value = v || ""; }
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+async function copyText(text) {
+  if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+  const t = document.createElement("textarea"); t.value = text; document.body.appendChild(t); t.select(); document.execCommand("copy"); document.body.removeChild(t);
+}
 
-Toulmin focus:
-${advice.toulmin}
+function updateSliderLabels() {
+  SLIDERS.forEach(id => el(id + "Val").textContent = el(id).value);
+}
 
-Accessible lens suggestion:
-${advice.lens}
+function scores() {
+  const out = {};
+  SLIDERS.forEach(id => out[id] = Number(el(id).value));
+  return out;
+}
 
-OS1 → OS2 bridge:
-OS1: I feel strongly that ______ because ______.
-OS2: Publicly, I can support the claim that ______ with the evidence ______. The warrant connecting the evidence to the claim is ______. I should qualify the claim by admitting ______. A repair-oriented next step would be ______.
+function setCoherencePreset(name) {
+  const presets = {
+    ready: {body:78, agency:82, clarity:84, voice:76, time:80},
+    heated: {body:32, agency:64, clarity:52, voice:48, time:45},
+    silenced: {body:55, agency:50, clarity:64, voice:22, time:58},
+    challenger: DEMOS.challenger.sliders
+  };
+  const p = presets[name] || presets.ready;
+  Object.keys(p).forEach(k => el(k).value = p[k]);
+  updateSliderLabels();
+  analyzeCoherence();
+}
 
-Boundary:
-This is a teaching proxy for reasoning accessibility, not a clinical measure, diagnosis, or grade.`;document.getElementById("coherenceOutput").innerHTML=`<p><strong>${advice.status.label}:</strong> ${advice.status.message}</p><p><strong>Lowest support dimension:</strong> ${low.label} (${advice.lowScore} / 100).</p><p><strong>Toulmin focus:</strong> ${advice.toulmin}</p><p><strong>Accessible lens suggestion:</strong> ${advice.lens}</p>`;document.getElementById("nextMoveOutput").innerHTML=`<p><strong>Recommended next move:</strong> ${advice.move}</p><p><strong>OS1 → OS2 bridge:</strong> Name the first reaction, then turn it into a public claim with evidence, warrant, qualifier, and repair proposal.</p>`;document.getElementById("copyStatus").textContent="Summary generated.";}
-function updateSliderLabels(){sliders.forEach(s=>{const el=document.getElementById(s.id),val=document.getElementById(s.id+"Val");if(el&&val)val.textContent=el.value;});}
-function setPreset(name){const preset=presets[name];Object.keys(preset).forEach(id=>{const el=document.getElementById(id);if(el)el.value=preset[id];});updateSliderLabels();analyzeCoherence();}
-function resetCoherence(){setPreset("reset");document.getElementById("publicScenario").value="";document.getElementById("copyStatus").textContent="Reset to default classroom values.";}
-async function copyText(text){if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);return true;}const tmp=document.createElement("textarea");tmp.value=text;document.body.appendChild(tmp);tmp.select();document.execCommand("copy");document.body.removeChild(tmp);return true;}
-async function copyCoherenceSummary(){if(!lastSummary)analyzeCoherence();try{await copyText(lastSummary);document.getElementById("copyStatus").textContent="Copied summary.";}catch(e){document.getElementById("copyStatus").textContent="Copy failed. Select the generated text manually.";}}
-function sendToOS1OS2(){if(!lastSummary)analyzeCoherence();const scores=getScores(),score=avg(Object.values(scores)),low=lowestDimension(scores);document.getElementById("os1Text").value="I feel strongly that ______ because ______.";document.getElementById("os2Text").value=`Publicly, I can support the claim that ______ with the evidence ______.
+function lowest(sc) {
+  return Object.keys(sc).sort((a,b) => sc[a] - sc[b])[0];
+}
 
-Before finalizing this claim, I should notice that my current reasoning-accessibility estimate is ${score} / 100, and the dimension most needing support is ${low.label}.
+function dimensionName(k) {
+  return {
+    body:"Body / stress readiness",
+    agency:"Identity / agency clarity",
+    clarity:"Cognitive clarity",
+    voice:"Social trust / protected voice",
+    time:"Temporal horizon"
+  }[k];
+}
 
-The warrant connecting my evidence to my claim is ______.
+function analyzeCoherence() {
+  updateSliderLabels();
+  const sc = scores();
+  const avg = Math.round(Object.values(sc).reduce((a,b)=>a+b,0) / 5);
+  const low = lowest(sc);
+  el("score").textContent = avg;
+  el("bar").style.width = avg + "%";
 
-I should qualify the claim by admitting ______.
+  let status = avg >= 78 ? "High access" : avg >= 60 ? "Workable access" : avg >= 42 ? "Constrained access" : "Low access";
+  let priority = "";
+  if (low === "body") priority = "Lower heat before debate. Start with OS1 naming and a calm restatement of the public facts.";
+  if (low === "agency") priority = "Clarify role. Ask whether the student is reasoning as witness, participant, professional, citizen, designer, or repair partner.";
+  if (low === "clarity") priority = "Delay framework comparison. First isolate claim, grounds, and warrant.";
+  if (low === "voice") priority = "Protect voice before public debate. Use pairs or small groups and ask whose knowledge is missing.";
+  if (low === "time") priority = "Widen the time horizon. Ask what happens next, who bears future risk, and what repair would require.";
 
-A reasonable objection or missing voice might be ______.
+  el("coherenceOutput").innerHTML = `<p><span class="pill">${status}</span></p><p><strong>Lowest support dimension:</strong> ${dimensionName(low)} (${sc[low]} / 100).</p><p><strong>Recommended next move:</strong> ${priority}</p>`;
 
-A repair-oriented next step would be ______.`;window.location.hash="os1-os2";}
-function buildOS2Template(){const os1=document.getElementById("os1Text").value.trim()||"I feel strongly that ______ because ______.";document.getElementById("os2Text").value=`OS1 first reaction:
-${os1}
+  const fw = [];
+  const cls = [];
+  if (sc.time < 45) {
+    fw.push("Low temporal horizon: consequentialist and commons-governance reasoning may be harder right now. Start with care, virtue, or duty language, then deliberately extend the future horizon.");
+    cls.push("Ask students to map immediate, medium-term, and long-term consequences before asking for final policy judgment.");
+  } else {
+    fw.push("Temporal horizon is workable: consequentialist, capabilities, and commons-governance lenses can examine future burden and repair.");
+  }
+  if (sc.voice < 45) {
+    fw.push("Low protected voice: epistemic justice, care ethics, and capabilities reasoning should be foregrounded because dissent may not be heard.");
+    cls.push("Use pair discussion before full-class Toulmin debate. Do not treat quietness as agreement.");
+  } else {
+    fw.push("Protected voice is workable: students can test warrants and compare PRFs more safely.");
+  }
+  if (sc.clarity < 45) {
+    fw.push("Low cognitive clarity: delay philosopher comparison. First identify claim, grounds, and warrant.");
+    cls.push("Write one claim, one evidence statement, and one warrant on the board.");
+  } else {
+    fw.push("Cognitive clarity is workable: Toulmin structure and framework comparison are accessible.");
+  }
+  if (sc.body < 45) {
+    fw.push("Low body/stress readiness: virtue and care may resonate first because they name attention, vulnerability, and emotional salience without rushing into adversarial debate.");
+    cls.push("Begin with non-evaluative noticing before asking students to challenge one another.");
+  }
+  if (sc.agency < 45) {
+    fw.push("Low agency clarity: role-based ethical lenses can help clarify responsibility.");
+    cls.push("Ask each student to name their role in the case before writing a claim.");
+  }
+  if (cls.length === 0) cls.push("Proceed to full-class argument mapping. Ask students to compare at least two warrants.");
 
-OS2 public reasoning draft:
-Publicly, I can support the claim that ______ with the evidence ______.
+  el("frameworkOutput").innerHTML = "<strong>Framework accessibility:</strong><ul class='clean-list'>" + fw.map(x=>"<li>"+esc(x)+"</li>").join("") + "</ul>";
+  el("classroomOutput").innerHTML = "<strong>Classroom facilitation:</strong><ul class='clean-list'>" + cls.map(x=>"<li>"+esc(x)+"</li>").join("") + "</ul>";
+}
 
-The warrant connecting this evidence to the claim is ______.
+function launchDemo(id) {
+  const d = DEMOS[id];
+  activeDemo = id;
+  Object.keys(d.sliders).forEach(k => el(k).value = d.sliders[k]);
+  updateSliderLabels();
+  set("os1", d.os1); set("notices", d.notices); set("hides", d.hides); set("claim", d.claim);
+  set("grounds", d.grounds); set("warrantField", d.warrant); set("warrantTest", d.warrantTest); set("alternate", d.alternatePRF);
+  set("qualifier", d.qualifier); set("rebuttal", d.rebuttal); set("repair", d.repair); set("revision", d.revision);
+  analyzeCoherence();
+  generateTranslation();
+  sendToToulmin();
+  if (id === "challenger") {
+    lastChallenger = `Challenger Classroom Package\n\nCentral warrant failure:\nTreating unresolved uncertainty as permission to proceed under catastrophic stakes.\n\nScenario:\n${d.scenario}\n\nWarrant:\n${d.warrant}\n\nPRF Revision Endpoint:\n${d.revision}`;
+    el("challengerOutput").innerHTML = `<h3>Challenger demo loaded</h3><p><strong>Scenario:</strong> ${esc(d.scenario)}</p><p><strong>Weak argument:</strong> ${esc(d.weak)}</p><p><strong>Stronger argument:</strong> ${esc(d.strong)}</p><p><strong>Warrant failure to teach:</strong> treating unresolved uncertainty as permission to proceed under catastrophic stakes.</p><p><strong>Step 12 endpoint:</strong> ${esc(d.revision)}</p>`;
+    el("challengerStatus").textContent = "Challenger is loaded into Coherence, OS1→OS2, and Toulmin.";
+  }
+  location.hash = id === "challenger" ? "challenger" : "translator";
+}
 
-The backing for this warrant is ______.
+function showInstructorScript() {
+  el("challengerOutput").innerHTML = `<h3>75-minute instructor script</h3><ol class="clean-list"><li><strong>0–8 min:</strong> Read the scenario and collect OS1 reactions without debate.</li><li><strong>8–18 min:</strong> Run the Coherence Bridge. Ask what low protected voice does to engineering knowledge.</li><li><strong>18–32 min:</strong> Identify claim, grounds, and warrant.</li><li><strong>32–45 min:</strong> Teach the core warrant failure: uncertainty is not permission when stakes are catastrophic.</li><li><strong>45–58 min:</strong> Use Step 8 to compare an unused lens.</li><li><strong>58–70 min:</strong> Generate the Toulmin card and add qualifier and rebuttal.</li><li><strong>70–75 min:</strong> End with Step 12: what should students now notice in future cases?</li></ol>`;
+}
 
-I should qualify the claim by admitting ______.
+function showStudentScript() {
+  el("challengerOutput").innerHTML = `<h3>Student self-guided version</h3><ol class="clean-list"><li>Launch the Challenger demo.</li><li>Write your OS1 reaction in your own words.</li><li>Identify what the reaction notices and what it might hide.</li><li>Find the warrant connecting evidence to claim.</li><li>Pick one alternate lens you did not use.</li><li>Generate the OS2 statement.</li><li>Write a PRF revision note beginning: “I will now notice when...”</li></ol><p><strong>Reminder:</strong> This is a practice opportunity, not automatically a graded assignment unless your instructor separately assigns it.</p>`;
+}
 
-A reasonable objection or missing voice might be ______.
+async function copyChallengerPackage() {
+  if (!lastChallenger) launchDemo("challenger");
+  await copyText(lastChallenger);
+  el("challengerStatus").textContent = "Copied Challenger package.";
+}
 
-A repair-oriented next step would be ______.`;}
-async function copyOS2(){const text=document.getElementById("os2Text").value.trim();if(!text)buildOS2Template();await copyText(document.getElementById("os2Text").value);}
-function fieldValue(id, fallback="______") { const el=document.getElementById(id); const value=el?el.value.trim():""; return value||fallback; }
-function setField(id,value){ const el=document.getElementById(id); if(el) el.value=value||""; }
-function loadActiveDemoToTranslator(){ if(!activeDemoId){loadDemo("challenger");return;} const d=demos[activeDemoId]; setField("os1Text",d.os1); setField("os1Notices","This reaction notices "+d.tag.toLowerCase()+" and treats the case as morally significant rather than merely technical."); setField("os1Hides",d.mistake+" It may also hide uncertainty, alternate perspectives, or the need to separate evidence from interpretation."); setField("publicClaim",d.claim); setField("publicGrounds",d.grounds); setField("publicWarrant",d.warrant); setField("warrantTest","This warrant works only if the case facts really show the relevant harm, duty, risk, dependency, or institutional condition."); setField("alternatePRF","Another reasonable PRF might emphasize cost, authority, individual responsibility, formal compliance, or uncertainty differently."); setField("publicQualifier",d.qualifier); setField("publicRebuttal",d.rebuttal); setField("publicRepair",d.repair); setField("prfRevisionNote",d.prf+" Future perception should become more attentive to this kind of hidden warrant."); setField("os2Text",d.os2+"\n\nWarrant to test: "+d.warrant+"\n\nRepair-oriented next step: "+d.repair); generateOS2StudioOutput(); window.location.hash="os1-os2"; }
-function generateOS2StudioOutput(){ const os1=fieldValue("os1Text"),notices=fieldValue("os1Notices"),hides=fieldValue("os1Hides"),claim=fieldValue("publicClaim"),grounds=fieldValue("publicGrounds"),warrant=fieldValue("publicWarrant"),warrantTest=fieldValue("warrantTest"),alternate=fieldValue("alternatePRF"),qualifier=fieldValue("publicQualifier"),rebuttal=fieldValue("publicRebuttal"),repair=fieldValue("publicRepair"),revision=fieldValue("prfRevisionNote"); lastOS2StudioText=`OS1 → OS2 Translation Studio Output\n\n1. OS1 first reaction:\n${os1}\n\n2. What OS1 helps me notice:\n${notices}\n\n3. What OS1 may hide, simplify, or overstate:\n${hides}\n\n4. OS2 public claim:\n${claim}\n\n5. Grounds / public evidence:\n${grounds}\n\n6. Warrant:\n${warrant}\n\n7. Warrant test:\n${warrantTest}\n\n8. Alternate PRF check:\n${alternate}\n\n9. Qualifier:\n${qualifier}\n\n10. Rebuttal:\n${rebuttal}\n\n11. Repair-oriented next step:\n${repair}\n\n12. PRF revision / future perception note:\n${revision}\n\nIntegrated OS2 statement:\nPublicly, I can support the claim that ${claim} because ${grounds}. These grounds support the claim through the warrant that ${warrant}. I should qualify this by admitting that ${qualifier}. A reasonable objection is that ${rebuttal}. Even with that objection, a constructive next step is ${repair}. This should revise future perception by helping me notice that ${revision}`; document.getElementById("os2StudioOutput").textContent=lastOS2StudioText; const required=[["OS1 reaction",os1],["notices",notices],["hides/limits",hides],["claim",claim],["grounds",grounds],["warrant",warrant],["warrant test",warrantTest],["alternate PRF",alternate],["qualifier",qualifier],["rebuttal",rebuttal],["repair",repair],["PRF revision",revision]]; const complete=required.filter(item=>item[1]!=="______").length; const missing=required.filter(item=>item[1]==="______").map(item=>item[0]); const score=Math.round((complete/required.length)*100); let status="Strong translation",pill="pill"; if(score<70){status="Developing translation";pill="pill warn";} if(score<45){status="Needs more public structure";pill="pill danger";} document.getElementById("translationQualityOutput").innerHTML=`<p><span class="${pill}">${status}</span> <strong>${score}% complete</strong></p><p><strong>Present:</strong> ${complete} of ${required.length} translation elements.</p><p><strong>Missing or blank:</strong> ${missing.length?missing.join(", "):"None."}</p><p><strong>Teaching reminder:</strong> a strong OS2 statement does not erase OS1. It preserves what OS1 notices while making the reasoning public, qualified, rebuttable, and repair-oriented.</p>`; return lastOS2StudioText; }
-async function copyOS2StudioOutput(){ if(!lastOS2StudioText)generateOS2StudioOutput(); await copyText(lastOS2StudioText); document.getElementById("os2StudioCopyStatus").textContent="Copied OS1 → OS2 translation output."; }
-function sendTranslationToToulmin(){ generateOS2StudioOutput(); setField("claimField",fieldValue("publicClaim","")); setField("groundsField",fieldValue("publicGrounds","")); setField("warrantField",fieldValue("publicWarrant","")); setField("backingField","Backing should name the ethical framework, course concept, public source, or institutional principle supporting the warrant."); setField("qualifierField",fieldValue("publicQualifier","")); setField("rebuttalField",fieldValue("publicRebuttal","")); setField("repairField",fieldValue("publicRepair","")); buildToulminOutput(); window.location.hash="toulmin"; }
-function clearOS2Studio(){ ["os1Text","os1Notices","os1Hides","publicClaim","publicGrounds","publicWarrant","warrantTest","alternatePRF","publicQualifier","publicRebuttal","publicRepair","prfRevisionNote","os2Text"].forEach(id=>setField(id,"")); lastOS2StudioText=""; document.getElementById("os2StudioOutput").textContent="Complete the steps or load a demo, then generate the OS2 statement."; document.getElementById("translationQualityOutput").textContent="The quality check will identify whether the translation includes a claim, grounds, warrant, qualifier, rebuttal, repair proposal, and PRF revision note."; document.getElementById("os2StudioCopyStatus").textContent=""; }
+function lensPrompt(kind) {
+  const prompts = {
+    care:"A care ethics lens would ask whose vulnerability, dependency, relationship, or need for response is being ignored. It would make salient ______ and would question ______.",
+    virtue:"A virtue ethics lens would ask what kind of character, courage, practical wisdom, or professional excellence the situation requires. It would make salient ______ and would question ______.",
+    duty:"A deontological lens would ask whether persons are being treated as ends, what duty is owed, and what right must not be violated. It would make salient ______ and would question ______.",
+    consequence:"A consequentialist lens would ask what outcomes, risks, and future burdens are likely if this action proceeds. It would make salient ______ and would question ______.",
+    capability:"A capabilities lens would ask whose real agency-supporting conditions are strengthened or weakened. It would make salient ______ and would question ______."
+  };
+  set("alternate", prompts[kind]);
+  generateTranslation();
+}
 
-function renderDemoCards(){const box=document.getElementById("demoCards");box.innerHTML=Object.keys(demos).map(id=>{const d=demos[id];return `<article class="demo-card ${id===activeDemoId?"active":""}"><h3>${esc(d.title)}</h3><p><span class="pill">${esc(d.tag)}</span></p><p>${esc(d.scenario)}</p><div class="actions"><button class="button primary" onclick="loadDemo('${id}')">Load demo</button></div></article>`;}).join("");}
-function demoSummary(id){const d=demos[id];return `Demo: ${d.title}
+function revisionExample(kind) {
+  const examples = {
+    uncertainty:"I will now notice when uncertainty is being used to excuse action rather than trigger caution, especially when other people bear catastrophic risk.",
+    efficiency:"I will now notice when I am treating efficiency as a warrant without first asking whether efficiency is the right value for this situation.",
+    voice:"I will now notice when a decision process appears orderly but lacks protected voice for the people whose knowledge or vulnerability matters most."
+  };
+  set("revision", examples[kind]);
+  generateTranslation();
+}
 
-Scenario:
-${d.scenario}
+function generateTranslation() {
+  const fields = ["os1","notices","hides","claim","grounds","warrantField","warrantTest","alternate","qualifier","rebuttal","repair","revision"];
+  const labels = ["OS1 first reaction","What OS1 notices","What OS1 may hide","Public claim","Grounds","Warrant","Warrant test","Alternate PRF check","Qualifier","Rebuttal","Repair","PRF revision"];
+  const values = fields.map(id => val(id));
+  const missing = labels.filter((_,i)=>!values[i]);
+  lastTranslation = `OS1 → OS2 Translation Studio Output\n\n1. OS1 first reaction:\n${values[0] || "______"}\n\n2. What OS1 helps me notice:\n${values[1] || "______"}\n\n3. What OS1 may hide, simplify, or overstate:\n${values[2] || "______"}\n\n4. OS2 public claim:\n${values[3] || "______"}\n\n5. Grounds / public evidence:\n${values[4] || "______"}\n\n6. Warrant:\n${values[5] || "______"}\n\n7. Warrant test:\n${values[6] || "______"}\n\n8. Alternate PRF check:\n${values[7] || "______"}\n\n9. Qualifier:\n${values[8] || "______"}\n\n10. Rebuttal:\n${values[9] || "______"}\n\n11. Repair-oriented next step:\n${values[10] || "______"}\n\n12. PRF revision / future perception note:\n${values[11] || "______"}\n\nIntegrated OS2 statement:\nPublicly, I can support the claim that ${values[3] || "______"} because ${values[4] || "______"}. These grounds support the claim through the warrant that ${values[5] || "______"}. I should qualify this by admitting that ${values[8] || "______"}. A reasonable objection is that ${values[9] || "______"}. Even with that objection, a constructive next step is ${values[10] || "______"}. This should revise future perception by helping me notice that ${values[11] || "______"}.`;
+  el("translationOutput").textContent = lastTranslation;
+  const pct = Math.round(((fields.length - missing.length) / fields.length) * 100);
+  el("qualityOutput").innerHTML = `<p><span class="pill">${pct >= 90 ? "Strong translation" : pct >= 65 ? "Developing translation" : "Needs more structure"}</span> <strong>${pct}% complete</strong></p><p><strong>Missing:</strong> ${missing.length ? missing.join(", ") : "None."}</p><p><strong>Teaching reminder:</strong> OS2 preserves what OS1 notices while making reasoning public, qualified, rebuttable, and repair-oriented.</p>`;
+  return lastTranslation;
+}
 
-OS1 first reaction:
-${d.os1}
+async function copyTranslation() {
+  if (!lastTranslation) generateTranslation();
+  await copyText(lastTranslation);
+  el("translationStatus").textContent = "Copied OS1 → OS2 output.";
+}
 
-OS2 public claim:
-${d.os2}
+function sendToToulmin() {
+  generateTranslation();
+  set("tClaim", val("claim"));
+  set("tGrounds", val("grounds"));
+  set("tWarrant", val("warrantField"));
+  set("tBacking", "Backing should name the ethical framework, course concept, public source, professional standard, or institutional principle supporting the warrant.");
+  set("tQualifier", val("qualifier"));
+  set("tRebuttal", val("rebuttal"));
+  set("tRepair", val("repair"));
+  generateToulmin();
+}
 
-Weak argument:
-${d.weak}
+function generateToulmin() {
+  lastToulmin = `Public Toulmin Argument Card\n\nClaim:\n${val("tClaim") || "______"}\n\nGrounds:\n${val("tGrounds") || "______"}\n\nWarrant:\n${val("tWarrant") || "______"}\n\nBacking:\n${val("tBacking") || "______"}\n\nQualifier:\n${val("tQualifier") || "______"}\n\nRebuttal:\n${val("tRebuttal") || "______"}\n\nRepair-oriented next step:\n${val("tRepair") || "______"}\n\nPRF / Warrant Check:\nWhat does this warrant make visible? What does it hide? What new evidence or voice should modify the model?`;
+  el("toulminOutput").textContent = lastToulmin;
+  return lastToulmin;
+}
 
-Stronger argument:
-${d.strong}
+async function copyToulmin() {
+  if (!lastToulmin) generateToulmin();
+  await copyText(lastToulmin);
+}
 
-Toulmin breakdown:
-Claim: ${d.claim}
-Grounds: ${d.grounds}
-Warrant: ${d.warrant}
-Backing: ${d.backing}
-Qualifier: ${d.qualifier}
-Rebuttal: ${d.rebuttal}
-Repair: ${d.repair}
+function clearTranslator() {
+  ["os1","notices","hides","claim","grounds","warrantField","warrantTest","alternate","qualifier","rebuttal","repair","revision"].forEach(id => set(id,""));
+  el("translationOutput").textContent = "Load a demo or complete the steps.";
+  el("qualityOutput").textContent = "The quality check will identify whether the output contains the key reasoning elements.";
+}
 
-Likely ethical lenses:
-${d.lens}
+function siteCheck() {
+  const ids = ["home","challenger","demos","warrant","coherence","translator","toulmin","agency","handoff","sitecheck"];
+  const found = ids.filter(id => el(id)).length;
+  el("siteOutput").textContent = [
+    "href: " + location.href,
+    "pathname: " + location.pathname,
+    "sections found: " + found + " / " + ids.length,
+    "sliders found: " + SLIDERS.filter(id => el(id)).length + " / " + SLIDERS.length,
+    "demo cases found: " + Object.keys(DEMOS).length,
+    "single-file status: OK — no local CSS, JS, image, or page dependencies required."
+  ].join("\n");
+}
 
-Common mistake:
-${d.mistake}
-
-PRF / warrant bridge:
-${d.prf}`;}
-function loadDemo(id){activeDemoId=id;const d=demos[id];activeDemoSummary=demoSummary(id);renderDemoCards();document.getElementById("activeDemoTitle").textContent=d.title;document.getElementById("activeDemoOutput").innerHTML=`<p><span class="pill">${esc(d.tag)}</span></p><p><strong>Scenario:</strong> ${esc(d.scenario)}</p><p><strong>OS1:</strong> ${esc(d.os1)}</p><p><strong>OS2:</strong> ${esc(d.os2)}</p><p><strong>Weak argument:</strong> ${esc(d.weak)}</p><p><strong>Stronger argument:</strong> ${esc(d.strong)}</p><p><strong>Common mistake:</strong> ${esc(d.mistake)}</p><p><strong>Repair:</strong> ${esc(d.repair)}</p>`;loadActiveDemoToTools(false);document.getElementById("demoCopyStatus").textContent="Loaded "+d.title+".";}
-function loadActiveDemoToTools(jump=true){if(!activeDemoId)activeDemoId="challenger";const d=demos[activeDemoId];Object.keys(d.sliders).forEach(id=>{const el=document.getElementById(id);if(el)el.value=d.sliders[id];});document.getElementById("publicScenario").value=d.scenario;document.getElementById("os1Text").value=d.os1;document.getElementById("os2Text").value=d.os2+"\\n\\nWarrant to test: "+d.warrant+"\\n\\nRepair-oriented next step: "+d.repair;document.getElementById("claimField").value=d.claim;document.getElementById("groundsField").value=d.grounds;document.getElementById("warrantField").value=d.warrant;document.getElementById("backingField").value=d.backing;document.getElementById("qualifierField").value=d.qualifier;document.getElementById("rebuttalField").value=d.rebuttal;document.getElementById("repairField").value=d.repair;setField("os1Notices","This reaction notices "+d.tag.toLowerCase()+" and treats the case as morally significant rather than merely technical.");setField("os1Hides",d.mistake+" It may also hide uncertainty, alternate perspectives, or the need to separate evidence from interpretation.");setField("publicClaim",d.claim);setField("publicGrounds",d.grounds);setField("publicWarrant",d.warrant);setField("warrantTest","This warrant works only if the case facts really show the relevant harm, duty, risk, dependency, or institutional condition.");setField("alternatePRF","Another reasonable PRF might emphasize cost, authority, individual responsibility, formal compliance, or uncertainty differently.");setField("publicQualifier",d.qualifier);setField("publicRebuttal",d.rebuttal);setField("publicRepair",d.repair);setField("prfRevisionNote",d.prf+" Future perception should become more attentive to this kind of hidden warrant.");updateSliderLabels();analyzeCoherence();buildToulminOutput();generateOS2StudioOutput();if(jump)window.location.hash="coherence-bridge";}
-async function copyActiveDemo(){if(!activeDemoId)loadDemo("challenger");await copyText(activeDemoSummary);document.getElementById("demoCopyStatus").textContent="Copied active demo summary.";}
-function renderArgumentOptions(){const select=document.getElementById("argumentSelect");select.innerHTML=argumentCards.map(a=>`<option value="${a.id}">${esc(a.title)}</option>`).join("");}
-function getSelectedArgument(){const id=document.getElementById("argumentSelect").value;return argumentCards.find(a=>a.id===id)||argumentCards[0];}
-function renderArgumentExercise(){const a=getSelectedArgument();lastArgumentText=`Find the Warrant Exercise — ${a.title}
-
-Argument:
-${a.argument}
-
-Issue:
-${a.issue}
-
-Claim:
-${a.claim}
-
-Grounds:
-${a.grounds}
-
-Likely warrant:
-${a.warrant}
-
-What the warrant hides or reveals:
-${a.hidden}
-
-Improved warrant:
-${a.improved}`;document.getElementById("argumentExercise").innerHTML=`<p><strong>Argument:</strong> ${esc(a.argument)}</p><p><strong>Issue:</strong> ${esc(a.issue)}</p><table class="table"><tr><th>Claim</th><td>${esc(a.claim)}</td></tr><tr><th>Grounds</th><td>${esc(a.grounds)}</td></tr><tr><th>Likely warrant</th><td>${esc(a.warrant)}</td></tr><tr><th>What it hides/reveals</th><td>${esc(a.hidden)}</td></tr><tr><th>Improved warrant</th><td>${esc(a.improved)}</td></tr></table>`;}
-function loadArgumentToToulmin(){const a=getSelectedArgument();document.getElementById("claimField").value=a.claim;document.getElementById("groundsField").value=a.grounds;document.getElementById("warrantField").value=a.improved;document.getElementById("backingField").value="Use an ethical framework, public evidence, or course concept to support this improved warrant.";document.getElementById("qualifierField").value="This claim should be qualified by naming limits, uncertainty, and relevant exceptions.";document.getElementById("rebuttalField").value="A reasonable critic might challenge the evidence, the warrant, or the scope of the repair proposal.";document.getElementById("repairField").value="Identify a concrete repair step that follows from the improved warrant.";buildToulminOutput();window.location.hash="toulmin";}
-async function copyArgumentExercise(){if(!lastArgumentText)renderArgumentExercise();await copyText(lastArgumentText);document.getElementById("argumentCopyStatus").textContent="Copied warrant exercise.";}
-function buildToulminOutput(){const fields={Claim:document.getElementById("claimField").value.trim(),Grounds:document.getElementById("groundsField").value.trim(),Warrant:document.getElementById("warrantField").value.trim(),Backing:document.getElementById("backingField").value.trim(),Qualifier:document.getElementById("qualifierField").value.trim(),Rebuttal:document.getElementById("rebuttalField").value.trim(),Repair:document.getElementById("repairField").value.trim()};const text=`Public Argument Card
-
-Claim:
-${fields.Claim||"______"}
-
-Grounds:
-${fields.Grounds||"______"}
-
-Warrant:
-${fields.Warrant||"______"}
-
-Backing:
-${fields.Backing||"______"}
-
-Qualifier:
-${fields.Qualifier||"______"}
-
-Rebuttal:
-${fields.Rebuttal||"______"}
-
-Repair-oriented next step:
-${fields.Repair||"______"}
-
-PRF / Warrant Check:
-What does this warrant make visible? What does it hide? What new evidence or voice should modify the model?`;document.getElementById("toulminOutput").textContent=text;return text;}
-async function copyToulminOutput(){const text=buildToulminOutput();await copyText(text);document.getElementById("toulminCopyStatus").textContent="Copied public argument card.";}
-function clearToulmin(){["claimField","groundsField","warrantField","backingField","qualifierField","rebuttalField","repairField"].forEach(id=>document.getElementById(id).value="");document.getElementById("toulminOutput").textContent="Load a demo or fill in the fields to build a public argument card.";}
-function runDiagnostic(){const out=document.getElementById("locationOutput");const sectionIds=["home","walkthrough","demo-library","warrant-bridge","coherence-bridge","os1-os2","toulmin","agency-loop","frameworks","vocabulary","handoff","site-check"];const checks=["href: "+window.location.href,"pathname: "+window.location.pathname,"hash: "+window.location.hash,"protocol: "+window.location.protocol,"host: "+window.location.host,"document title: "+document.title,"local sections found: "+sectionIds.filter(id=>document.getElementById(id)).length+" / "+sectionIds.length,"coherence sliders found: "+sliders.filter(s=>document.getElementById(s.id)).length+" / "+sliders.length,"demo cases found: "+Object.keys(demos).length,"argument cards found: "+argumentCards.length,"single-file status: OK — no local CSS, JS, image, or page dependencies are required."];out.textContent=checks.join("\\n");}
-function installNavSpy(){const links=Array.from(document.querySelectorAll(".nav a"));const sections=links.map(a=>document.querySelector(a.getAttribute("href"))).filter(Boolean);const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const id="#"+entry.target.id;links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")===id));}});},{rootMargin:"-35% 0px -58% 0px",threshold:.01});sections.forEach(s=>observer.observe(s));}
-document.addEventListener("DOMContentLoaded",()=>{sliders.forEach(s=>{const el=document.getElementById(s.id);if(el)el.addEventListener("input",()=>{updateSliderLabels();analyzeCoherence();});});renderDemoCards();renderArgumentOptions();renderArgumentExercise();updateSliderLabels();analyzeCoherence();runDiagnostic();installNavSpy();});
+document.addEventListener("DOMContentLoaded", () => {
+  SLIDERS.forEach(id => el(id).addEventListener("input", analyzeCoherence));
+  analyzeCoherence();
+  siteCheck();
+});
 </script>
 </body>
 </html>
